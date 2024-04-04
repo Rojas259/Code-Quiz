@@ -14,7 +14,7 @@ var startButton = document.createElement("button");
 startButton.setAttribute("id", "start")
 startButton.textContent = "Start Quiz!";
 
-startButton.setAttribute("style", "border: none; background-color: #5F43F7; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; color: hsl(0, 0%, 100%); display: inline-block; font-size: 22px; line-height: 22px; margin: 16px 16px 16px 20px; padding: 14px 34px; text-align: center; cursor: pointer;")
+startButton.setAttribute("style", "border: none; background-color: #63030a; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; color: hsl(0, 0%, 100%); display: inline-block; font-size: 22px; line-height: 22px; margin: 16px 16px 16px 20px; padding: 14px 34px; text-align: center; cursor: pointer;")
 startButton.addEventListener("mouseover", function () {
     startButton.style.boxShadow = "0 8px 13px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)";
 })
@@ -27,13 +27,12 @@ startDiv.appendChild(title);
 startDiv.appendChild(description);
 startDiv.appendChild(startButton);
 
-// Code for the Timer and highscore button
 var topBarSpacing = document.querySelector(".time-header");
 topBarSpacing.setAttribute("style", "display: flex; justify-content: space-between");
 
 var highScoreBtn = document.createElement("button");
 highScoreBtn.setAttribute("id", "high-score-page");
-highScoreBtn.setAttribute("style", "margin: 16px; cursor: pointer; border: none; background-color: #5F43F7; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; color: hsl(0, 0%, 100%);")
+highScoreBtn.setAttribute("style", "margin: 16px; cursor: pointer; border: none; background-color: #63030a; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; color: hsl(0, 0%, 100%);")
 highScoreBtn.textContent = "High Scores";
 highScoreBtn.addEventListener("mouseover", function () {
     highScoreBtn.style.boxShadow = "0 8px 13px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)";
@@ -47,9 +46,6 @@ highScoreBtn.addEventListener("click", function () {
 
 topBarSpacing.appendChild(highScoreBtn);
 
-
-
-// Timer and Button Logic
 var timer = document.querySelector('#timer');
 var startBtn = document.querySelector('#start');
 var startText = document.querySelector('#start-page');
@@ -67,10 +63,8 @@ function checkTimeAndShowScore() {
     }
 }
 ;
-// This is the function that runs after the quiz
-// This will start the score section.
+
 function showScorePage() {
-    // debugger
     var quizSection = document.getElementById("quiz");
     var scoreSection = document.getElementById("score");
 
@@ -96,7 +90,7 @@ function showScorePage() {
 
     var submitButton = document.createElement("button");
     submitButton.textContent = "Submit";
-    submitButton.setAttribute("style", "margin: 5px; padding: 4px; cursor: pointer; border: none; background-color: #5F43F7; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; color: hsl(0, 0%, 100%);")
+    submitButton.setAttribute("style", "margin: 5px; padding: 4px; cursor: pointer; border: none; background-color: #63030a; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; color: hsl(0, 0%, 100%);")
 
     submitButton.addEventListener("click", function () {
         var userName = nameInput.value.trim();
@@ -120,7 +114,7 @@ function showScorePage() {
     scoreSection.appendChild(inputContainer);
 
     var timeHeader = document.querySelector(".time-header")
-    // Hides quiz section and shows Score page
+
     quizSection.classList.add("hidden");
     quizSection.setAttribute("style", "display: none");
     scoreSection.classList.remove("hidden");
@@ -130,7 +124,6 @@ function showScorePage() {
 
 }
 
-// This is the Function that will store the score and name in local storage
 function storeScore(userName, userTime) {
     var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
@@ -146,7 +139,6 @@ function storeScore(userName, userTime) {
     localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
-// This is the function that will start the quiz when the user hits the startBtn
 startBtn.addEventListener("click", function () {
     startText.classList.add("hidden")
 
@@ -159,16 +151,14 @@ startBtn.addEventListener("click", function () {
         timer.textContent = time;
 
         checkTimeAndShowScore();
-        // if (time <= 0) {
-        //     clearInterval(timerInterval);
-        // }
+  
     }, 1000)
 
     displayQuestion();
 })
 
 
-// This is the code for our quiz logic. 
+
 var storedQuestions = JSON.parse(localStorage.getItem("questions"));
 var questionIndex = 0;
 
@@ -178,7 +168,6 @@ function displayQuestion() {
 
     questionContainer.innerHTML = "";
 
-    // Creates the question
     var desiredQuestion = storedQuestions[questionIndex].question;
     var prompt = document.createElement("h3")
     prompt.textContent = desiredQuestion;
@@ -191,7 +180,6 @@ function displayQuestion() {
 
     function handleButtonClick() {
         var correctIndex = storedQuestions[questionIndex].correctIndex;
-        // debugger
         var feedback = document.createElement("p");
         if (this.textContent === storedQuestions[questionIndex].choices[correctIndex]) {
             feedback.textContent = "Correct!";
@@ -219,8 +207,6 @@ function displayQuestion() {
         }
     }
     
-    // Creates the multiple choice answer buttons
-
     var answers = storedQuestions[questionIndex].choices;
     for (var i = 0; i < answers.length; i++) {
 

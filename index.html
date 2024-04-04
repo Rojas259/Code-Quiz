@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Quiz</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>JavaScript Quiz</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+
 </head>
+
 <body>
-    <section class = "time-header">
-        <h3>Time Remaining<span id="time">0</span></h3>
+    <section class="time-header">
+        <h3 id="remaining">Remaining Time: <span id="timer">0</span></h3>
     </section>
 
-    <sectiion id = "start-page"></sectiion>
+    <section id="start-page">
+    </section>
 
-    <section id = "Quiz" class = "hidden"></section>
+    <section id="quiz" class="hidden">
+    </section>
 
-    <section id = "score" class = "hidden"></section>
+    <section id="score" class="hidden">
+    </section>
 
-    <section id = "feedback-container"></section>
-
-    <script src="Assets/scripts.js"></script>
-    <script src="Assets/questions.js"></script>
+    <section id="feedback-container">
+    </section>
+    
+    <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/questions.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,25 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.question-button {
+    display: block;
+    background-color: #5F43F7;
+    color: #fff;
+    text-align: center;
+    width: 40%;
+    height: 45px;
+    align-items: center;
+    margin: 4px;
+    border-radius: 25px;
+
+}
+
+.question-button:hover {
+    box-shadow: 0 8px 13px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
